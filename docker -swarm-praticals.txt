@@ -1,0 +1,33 @@
+   1  yum install docker -y
+    2  systemctl restart docker
+    3  systemctl status docker
+    4  docker swarm init .
+    5  docker swarm init 
+    6  docker node ls
+    7  docker sercice ls
+    8  docker service ls
+    9  docker service create --name myservice --replicas 3 -p 8080:80 httpd
+   10  docker service ls
+   11  docker service ps myservice
+   12  docker node ls
+   13  docker node update --availability drain ip-172-31-49-141.ec2.internal
+   14  docker service ps myservice
+   15  docker service rm myservice
+   16  docker service ls
+   17  docker service create --name myservice --replicas 4 -p 8080:80 nginx
+   18  docker service ls
+   19  docker service ps myservice
+   20  docker node ls
+   21  docker service scale myservice=8 
+   22  docker service ps myservice
+   23  docker service scale myservice=6
+   24  dcoker node ls
+   25  docker node ls
+   26  docker node update --label-add App=Tango hsteyx5eyfcs9pzi8lb6sun5r
+   27  docker node inspect hsteyx5eyfcs9pzi8lb6sun5r   
+   31  docker service create --name TangoAppService --replicas 2 --constraint 'node.labels.App == Tango' -p 8282:80 httpd   
+   32  docker node update --label-rm App hsteyx5eyfcs9pzi8lb6sun5r
+   33  docker node ls
+   34  docker swarm join-token worker
+   35  docker node ls
+   
